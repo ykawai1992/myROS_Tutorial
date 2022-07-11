@@ -1,10 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(testbot_description)
-
-## for URDF tutorials, parser R040107
-#add_executable(parser src/parser.cpp)
-add_executable(parser urdf/src/parser.cpp)
-target_link_libraries(parser ${catkin_LIBRARIES})
+project(vis_lecture)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -13,11 +8,11 @@ target_link_libraries(parser ${catkin_LIBRARIES})
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  urdf
-  roscpp #refer to roid1
-  rospy #refer to roid1
-  std_msgs #refer to roid1
-  tf #refer to roid1
+  roscpp
+  rospy
+  std_msgs
+  tf
+  xacro
 )
 
 ## System dependencies are found with CMake's conventions
@@ -77,7 +72,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate added messages and services with any dependencies listed here
 # generate_messages(
 #   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
+#   std_msgs
 # )
 
 ################################################
@@ -111,8 +106,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES testbot_description
-#  CATKIN_DEPENDS urdf
+#  LIBRARIES vis_lecture
+#  CATKIN_DEPENDS roscpp rospy std_msgs tf
 #  DEPENDS system_lib
 )
 
@@ -129,7 +124,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/testbot_description.cpp
+#   src/${PROJECT_NAME}/vis_lecture.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -140,7 +135,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/testbot_description_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/vis_lecture_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -204,7 +199,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_testbot_description.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_vis_lecture.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
