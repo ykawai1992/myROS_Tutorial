@@ -12,7 +12,11 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   tf
+  tf2
+  tf2_ros
   xacro
+  #vis_lecture
+  #sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -136,6 +140,11 @@ include_directories(
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/vis_lecture_node.cpp)
+add_executable(vis_tf_broadcast src/vis_tf_broadcast.cpp)
+add_executable(vis_tf_listen src/vis_tf_listen.cpp)
+add_executable(vis_joint_publisher src/joint_publisher1.cpp)
+add_executable(vis_robot_sim src/vis_robot_sim.cpp)
+add_executable(basic_twist_publisher src/basic_twist_publisher.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -151,6 +160,12 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+target_link_libraries(vis_tf_broadcast ${catkin_LIBRARIES})
+target_link_libraries(vis_tf_listen ${catkin_LIBRARIES})
+target_link_libraries(vis_joint_publisher ${catkin_LIBRARIES})
+target_link_libraries(vis_robot_sim ${catkin_LIBRARIES})
+target_link_libraries(basic_twist_publisher ${catkin_LIBRARIES})
+
 
 #############
 ## Install ##
